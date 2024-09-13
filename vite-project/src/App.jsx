@@ -7,10 +7,6 @@ const App = () => {
     <div className="App ui container">
       <h1>Pokedex</h1>
       <br />
-      <PokemonForm />
-      <br />
-      <Filter />
-      <br />
       <PokemonCollection />
     </div>
   );

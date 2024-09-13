@@ -1,15 +1,17 @@
 # Personal Pokedex
 
 In this assignment, you will build a React front-end application for browsing your collection of pokemon. You can view the pokemon you've already "caught", add new pokemon to your collection, and filter pokemon. In this app, you will practice:
-* Using `useState` to manage the various pieces of state in your application
-* Using the React Context API to establish global state values
-* Using `useEffect` and `fetch` to read from a dummy API
-* Creating controlled components
-* Handling click events
+
+- Using `useState` to manage the various pieces of state in your application
+- Using the React Context API to establish global state values
+- Using `useEffect` and `fetch` to read from a dummy API
+- Creating controlled components
+- Handling click events
 
 ![demo](./images/demo.gif)
 
 **Table of Contents**
+
 - [Short Responses](#short-responses)
 - [Technical Checklist](#technical-checklist)
 - [Set Up](#set-up)
@@ -37,22 +39,25 @@ There are 11 tasks to complete and 1 bonus.
 Your goal is to meet at least 75% of these requirements to complete the assignment. But don't stop there! Shoot for 100%!
 
 **Functionality**
-- [ ] On load of the page, a user see a list of pokemon cards displaying each pokemon's name, front sprite, and HP level.
-- [ ] A user can click on a pokemon card to toggle seeing its front sprite or back sprite.
-- [ ] A user can use the search bar to filter pokemon by name.
-- [ ] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
+
+- [x] On load of the page, a user see a list of pokemon cards displaying each pokemon's name, front sprite, and HP level.
+- [x] A user can click on a pokemon card to toggle seeing its front sprite or back sprite.
+- [x] A user can use the search bar to filter pokemon by name.
+- [x] A user can fill out and submit the form to create a new pokemon. This will display the new pokemon on the page and the new pokemon data should persist, even after the page is refreshed. This means you'll have to make a POST request to our JSON Server API!
 - [ ] Bonus: A user can additionally filter pokemon by HP
 
 **React Fundamentals**
-- [ ] `useState` is used to manage state. This is done in the Context Provider file at least once.
-- [ ] `useEffect` is used to perform an asynchronous fetch call. This is done in the Context Provider file at least once.
-- [ ] The form must be a controlled component. The `value` prop of the `input` elements should be set to a state value and `onChange` should update that state value.
-- [ ] The project uses React Context.
-- [ ] The project uses `useContext` at least once
+
+- [x] `useState` is used to manage state. This is done in the Context Provider file at least once.
+- [x] `useEffect` is used to perform an asynchronous fetch call. This is done in the Context Provider file at least once.
+- [x] The form must be a controlled component. The `value` prop of the `input` elements should be set to a state value and `onChange` should update that state value.
+- [x] The project uses React Context.
+- [x] The project uses `useContext` at least once
 
 **Miscellaneous**
-- [ ] Props are extracted in child components using destructuring
-- [ ] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
+
+- [x] Props are extracted in child components using destructuring
+- [x] At no point did you ever use any vanilla DOM JS methods (e.g. `document.querySelector` or `document.createElement`)
 
 **Note:** We are requiring you use React Context for this assignment, however it does not mean that Context is necessarily the right tool for this job. For a project this small, Context may not be the best solution. However, for now, use it!
 
@@ -74,9 +79,10 @@ Then, run `npx json-server db.json --port 4000` to start a mock back-end server 
 
 JSON Server is a tool to we use to spin up a mock API. It is a great alternative when you don't have the time to build out a full Express API. It does have its limitation in that it cannot support a robust relationships database. Read the [JSON Server documentation](https://github.com/typicode/json-server#getting-started) for more information.
 
-You will be using the API endpoint `http://localhost:4000/pokemon` for sending both GET and POST requests. 
-* When sending a GET request, you will receive the `pokemon` JSON data in the `db.json` file.
-* When sending a POST request, the request body will be added to `pokemon` array in that same file.
+You will be using the API endpoint `http://localhost:4000/pokemon` for sending both GET and POST requests.
+
+- When sending a GET request, you will receive the `pokemon` JSON data in the `db.json` file.
+- When sending a POST request, the request body will be added to `pokemon` array in that same file.
 
 ## Steps For Completing The First Feature In Assignment:
 
@@ -106,6 +112,7 @@ We simply create the `PokemonContext` so that it may be used throughout our appl
 Open up the `src/context/PokemonProvider.jsx` file. We've started things for you but you have to finish it.
 
 This is where you will:
+
 - Create and export the `PokemonProvider` component that will wrap around your entire application.
 - Create the state values / setter functions in your application
 - Make your fetch calls
@@ -122,21 +129,21 @@ As you add more state values to the context, you'll add those values to `context
 Check out this example for reference:
 
 ```jsx
-import { useState } from 'react';
-import CountContext from './CountContext';
+import { useState } from "react";
+import CountContext from "./CountContext";
 
-const CountContextProvider = ({children}) => {
-  const [count, setCount] = useState(0);
-  const [otherState, setOtherState] = useState(null);
+const CountContextProvider = ({ children }) => {
+	const [count, setCount] = useState(0);
+	const [otherState, setOtherState] = useState(null);
 
-  const contextValues = { count, setCount, otherState, setOtherState }
+	const contextValues = { count, setCount, otherState, setOtherState };
 
-  return (
-    <CountContext.Provider value={contextValues}>
-      {children}
-    </CountContext.Provider>
-  )
-}
+	return (
+		<CountContext.Provider value={contextValues}>
+			{children}
+		</CountContext.Provider>
+	);
+};
 ```
 
 ### 3. Wrap the App in the provider
@@ -150,9 +157,9 @@ Here is a generic example:
 
 ```jsx
 return (
-  <Provider>
-    <App />
-  </Provider>
+	<Provider>
+		<App />
+	</Provider>
 );
 ```
 
@@ -213,17 +220,18 @@ You got this!
 See below for some tips or [⬆ jump back to the top ⬆](#technical-checklist) to see the remaining items on the technical checklist.
 
 ### A Reminder About POSTing
-* When POSTing, you will need to include a `Content-Type: application/json` header.
-* For the `body` of the request, see the data structure of the existing pokemon in `db.json` as an example of what to include in the `body`.
-* See the example below of sending a POST request with `fetch` and an `options` object.
+
+- When POSTing, you will need to include a `Content-Type: application/json` header.
+- For the `body` of the request, see the data structure of the existing pokemon in `db.json` as an example of what to include in the `body`.
+- See the example below of sending a POST request with `fetch` and an `options` object.
 
 ```js
 const exampleOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ key: "value" }),
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify({ key: "value" }),
 };
 const url = "http://example.com/api";
 const response = await fetch(url, exampleOptions);

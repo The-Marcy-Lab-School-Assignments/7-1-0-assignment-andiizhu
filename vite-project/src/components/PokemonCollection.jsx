@@ -18,7 +18,7 @@ const PokemonCollection = () => {
         const filtered = allPokemon.filter((e) => e.name.toLowerCase().includes(lowerCaseQuery)) // create a variable to store filteredArray, wherein each element's (object) lowercase value in  key "name" includes the letters that are in the query, which is the current value from the input search form
         setFilteredPokemon(filtered) // update the filteredPokemon state with the filtered array
     }
-
+    //FEEDBACK: This is where the initial data is effecting the render of the page. Think about how the data was loaded and when it was loaded in.
     const handleAdd = (newPokemon) => { // callback function to handle adding pokemon to allPokemon
         setAllPokemon((curr) => [...curr, newPokemon]) // set the allPokemon state to include the new Pokemon, by spreading the exist data, and adding the new Pokemon.
     }
